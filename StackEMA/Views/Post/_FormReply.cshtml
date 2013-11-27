@@ -13,7 +13,7 @@
             Réponse
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model)
+            @Html.TextAreaFor(model => model.Message)
             @Html.ValidationMessageFor(model => model.Message)
         </div>
 

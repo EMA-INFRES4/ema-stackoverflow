@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using StackEMA.Models;
+using PagedList;
 
 namespace StackEMA.Controllers
 {
@@ -15,15 +16,23 @@ namespace StackEMA.Controllers
 
         //
         // GET: /Post/
-
-        public ActionResult Index()
+        [AllowAnonymous]
+        public ActionResult Index(int page = 1, int size = 3)
         {
-            return View(db.Post.ToList());
+            var Posts = from LastPosts in db.Post
+                            orderby LastPosts.Id descending
+                            select LastPosts;
+            Dictionary<string,object> dico = new Dictionary<string,object>();
+            dico.Add("lasts", Posts.Skip(0).Take(3).ToList());
+            dico.Add("all", Posts.ToList().ToPagedList(page, size));
+            ViewBag.size = size;
+            return View(dico);
         }
 
         //
         // GET: /Post/Details/5
 
+        [AllowAnonymous]
         public ActionResult Details(int id = 0)
         {
             Post post = db.Post.Find(id);

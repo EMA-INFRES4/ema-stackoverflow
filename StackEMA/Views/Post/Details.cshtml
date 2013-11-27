@@ -28,6 +28,10 @@
     @Html.ActionLink("Edit", "Edit", new { id=Model.Id }) |
     @Html.ActionLink("Back to List", "Index")
 </p>
-
 @Html.Partial("~/Views/Post/_Replies.cshtml", Model.Replies);
-@Html.Partial("~/Views/Post/_FormReply.cshtml", new Reply());
+@{if (User.Identity.IsAuthenticated)
+  {
+      @Html.Partial("~/Views/Post/_FormReply.cshtml", new Reply());
+      
+  }
+}

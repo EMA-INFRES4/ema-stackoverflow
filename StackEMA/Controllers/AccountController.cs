@@ -36,7 +36,7 @@ namespace StackEMA.Controllers
         public ActionResult Logout()
         {
             FormsAuthentication.SignOut();
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "Post");
         }
 
     }

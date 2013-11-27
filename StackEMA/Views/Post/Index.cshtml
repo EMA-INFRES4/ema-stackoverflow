@@ -1,29 +1,35 @@
-﻿@model IEnumerable<StackEMA.Models.Post>
+﻿@model Dictionary<string, object>
+@using PagedList.Mvc;
 
 @{
     ViewBag.Title = "Index";
+    List<StackEMA.Models.Post> Lasts = (List<StackEMA.Models.Post>)Model["lasts"];
+    PagedList.IPagedList<StackEMA.Models.Post> AllPosts = (PagedList.IPagedList<StackEMA.Models.Post>)Model["all"];
 }
-
-<h2>Index</h2>
-
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+<h2>Derniers posts</h2>
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
 <table>
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Title)
+            Titre
         </th>
+        <th>Réponses</th>
         <th>
-            @Html.DisplayNameFor(model => model.Date)
+            Date
         </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
+@foreach (var item in Lasts) {
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <td>
+            @item.Replies.Count
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Date)
@@ -37,3 +43,40 @@
 }
 
 </table>
+
+<h2>Tous les posts</h2>
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            Titre
+        </th>
+        <th>Réponses</th>
+        <th>
+            Date
+        </th>
+        <th></th>
+    </tr>
+    @foreach (var item in AllPosts)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @item.Replies.Count
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+    }
+</table>
+@Html.PagedListPager(AllPosts, page => Url.Action("Index", new { page, size = ViewBag.size }))
