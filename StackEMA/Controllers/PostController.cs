@@ -82,7 +82,6 @@ namespace StackEMA.Controllers
         {
             var email = User.Identity.Name;
             var user = db.User.FirstOrDefault(_ => _.Email == email);
-            //post.User = Session["user"];
             if (ModelState.IsValid)
             {
                 post.User = user;
@@ -93,61 +92,6 @@ namespace StackEMA.Controllers
             }
 
             return View(post);
-        }
-
-        //
-        // GET: /Post/Edit/5
-
-        public ActionResult Edit(int id = 0)
-        {
-            Post post = db.Post.Find(id);
-            if (post == null)
-            {
-                return HttpNotFound();
-            }
-            return View(post);
-        }
-
-        //
-        // POST: /Post/Edit/5
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(Post post)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Entry(post).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            return View(post);
-        }
-
-        //
-        // GET: /Post/Delete/5
-
-        public ActionResult Delete(int id = 0)
-        {
-            Post post = db.Post.Find(id);
-            if (post == null)
-            {
-                return HttpNotFound();
-            }
-            return View(post);
-        }
-
-        //
-        // POST: /Post/Delete/5
-
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            Post post = db.Post.Find(id);
-            db.Post.Remove(post);
-            db.SaveChanges();
-            return RedirectToAction("Index");
         }
 
         protected override void Dispose(bool disposing)
