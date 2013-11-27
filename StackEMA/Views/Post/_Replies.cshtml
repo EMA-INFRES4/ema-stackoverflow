@@ -1,0 +1,13 @@
+﻿@model IEnumerable<StackEMA.Models.Reply>
+
+@{
+    Layout = null;
+    StackEMA.Models.Reply r = new StackEMA.Models.Reply();
+}
+
+@{foreach (var item in Model)
+{
+      @item.Message
+    <hr />
+}
+}
