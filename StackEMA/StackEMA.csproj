@@ -275,6 +275,7 @@
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Post\_Replies.cshtml" />
     <Content Include="Views\Post\_FormReply.cshtml" />
+    <Content Include="Views\Post\Popular.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

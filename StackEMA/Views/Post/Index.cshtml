@@ -75,4 +75,7 @@
         </tr>
     }
 </table>
+<form method="get">
+    <input type="number" name="size" value="@ViewBag.size" /><button type="submit">Changer la taille</button>
+</form>
 @Html.PagedListPager(AllPosts, page => Url.Action("Index", new { page, size = ViewBag.size }))

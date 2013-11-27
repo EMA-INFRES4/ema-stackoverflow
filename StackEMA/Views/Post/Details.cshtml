@@ -6,7 +6,7 @@
 }
 
 <h2>Details</h2>
-
+<h3>Popularité : @Model.Popular</h3>
 <fieldset>
     <legend>Post</legend>
 
@@ -25,13 +25,12 @@
     </div>
 </fieldset>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id=Model.Id }) |
     @Html.ActionLink("Back to List", "Index")
 </p>
-@Html.Partial("~/Views/Post/_Replies.cshtml", Model.Replies);
+@Html.Partial("~/Views/Post/_Replies.cshtml", Model.Replies)
 @{if (User.Identity.IsAuthenticated)
   {
-      @Html.Partial("~/Views/Post/_FormReply.cshtml", new Reply());
+      @Html.Partial("~/Views/Post/_FormReply.cshtml", new Reply())
       
   }
 }

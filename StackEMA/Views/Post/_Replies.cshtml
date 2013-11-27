@@ -5,10 +5,19 @@
     StackEMA.Models.Reply r = new StackEMA.Models.Reply();
 }
 
-@{foreach (var item in Model)
+@foreach (var item in Model)
 {
-      <u>@item.User.Name</u>
-      @item.Message
-    <hr />
-}
+    var couleur = item.The ? "red" : "";
+    <div style="background:@couleur">
+        @if (item.Post.User.Email == User.Identity.Name)
+        {
+            <form>
+                <input type="hidden" name="id" />
+                <input type="hidden" name="isbest" value="@item.Id" />
+                <button type="submit">THE RESPONSE !</button>
+            </form>
+        }
+        <u>@item.User.Name</u>
+        @item.Message
+    </div>
 }

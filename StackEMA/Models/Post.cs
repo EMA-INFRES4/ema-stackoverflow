@@ -32,6 +32,8 @@ public partial class Post
 
     public Nullable<System.DateTime> Date { get; set; }
 
+    public short Popular { get; set; }
+
 
 
     public virtual ICollection<Reply> Replies { get; set; }

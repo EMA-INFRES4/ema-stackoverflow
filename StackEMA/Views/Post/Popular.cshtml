@@ -1,0 +1,46 @@
+﻿@model PagedList.IPagedList<StackEMA.Models.Post>
+@using PagedList.Mvc;
+
+@{
+    ViewBag.Title = "Popular";
+}
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+
+<h2>Popular</h2>
+<table>
+    <tr>
+        <th>
+            Titre
+        </th>
+        <th>Réponses</th>
+        <th>Popularité</th>
+        <th>
+            Date
+        </th>
+        <th></th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @item.Replies.Count
+            </td>
+            <td>
+                @item.Popular
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+            </td>
+        </tr>
+    }
+</table>
+<form method="get">
+    <input type="number" name="size" value="@ViewBag.size" /><button type="submit">Changer la taille</button>
+</form>
+@Html.PagedListPager(Model, page => Url.Action("Popular", new { page, size = ViewBag.size }))

@@ -29,6 +29,7 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Title" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Date" Type="datetime" Nullable="true" />
+    <Property Name="Popular" Type="smallint" Nullable="false" />
     <Property Name="User_Id" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Reply">
@@ -117,6 +118,7 @@
           <Property Name="Date" Type="DateTime" Nullable="true" />
           <NavigationProperty Name="Replies" Relationship="StackEMA.PostReply" FromRole="Post" ToRole="Reply" />
           <NavigationProperty Name="User" Relationship="StackEMA.UserPost" FromRole="Post" ToRole="User" />
+          <Property Name="Popular" Type="Int16" Nullable="false" />
         </EntityType>
         <EntityType Name="Reply">
           <Key>
@@ -164,6 +166,7 @@
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Title" ColumnName="Title" />
           <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Popular" ColumnName="Popular" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
