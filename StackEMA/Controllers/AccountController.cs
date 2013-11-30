@@ -25,7 +25,7 @@ namespace StackEMA.Controllers
             {
                 Session.Add("CurrentUser", user);
                 FormsAuthentication.SetAuthCookie(user.Email, true);
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Index", "Post");
             }
             else
             {

@@ -1,5 +1,6 @@
 ﻿using System.Web;
 using System.Web.Mvc;
+using StackEMA.App_Start;
 
 namespace StackEMA
 {
@@ -9,6 +10,8 @@ namespace StackEMA
         {
             filters.Add(new HandleErrorAttribute());
             filters.Add(new System.Web.Mvc.AuthorizeAttribute());
+            filters.Add(new TimerFilterAttribute());
+            filters.Add(new LoggerAttribute());
         }
     }
 }

@@ -130,15 +130,34 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_GlobalResources\Language.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Language.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\Language.es.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Language.es.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\Language.fr.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Language.fr.resx</DependentUpon>
+    </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\LoggerAttribute.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\TimerFilterAttribute.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="ClassRoute.cs" />
     <Compile Include="Controllers\PostController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="MobileEngine.cs" />
     <Compile Include="Models\Post.cs">
       <DependentUpon>StackEMA.tt</DependentUpon>
     </Compile>
@@ -242,6 +261,15 @@
       <LastGenOutput>StackEMA.cs</LastGenOutput>
       <DependentUpon>StackEMA.edmx</DependentUpon>
     </Content>
+    <Content Include="App_GlobalResources\Language.es.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Language.es.designer.cs</LastGenOutput>
+    </Content>
+    <EmbeddedResource Include="App_GlobalResources\Language.fr.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Language.fr.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />
@@ -276,6 +304,14 @@
     <Content Include="Views\Post\_Replies.cshtml" />
     <Content Include="Views\Post\_FormReply.cshtml" />
     <Content Include="Views\Post\Popular.cshtml" />
+    <Content Include="Views\Shared\Mobile\_Layout.cshtml" />
+    <Content Include="Views\Account\Mobile\Login.cshtml" />
+    <Content Include="Views\Post\Mobile\_FormReply.cshtml" />
+    <Content Include="Views\Post\Mobile\_Replies.cshtml" />
+    <Content Include="Views\Post\Mobile\Create.cshtml" />
+    <Content Include="Views\Post\Mobile\Details.cshtml" />
+    <Content Include="Views\Post\Mobile\Index.cshtml" />
+    <Content Include="Views\Post\Mobile\Popular.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -285,6 +321,12 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_GlobalResources\Language.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Language.Designer.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

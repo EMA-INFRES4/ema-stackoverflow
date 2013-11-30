@@ -1,0 +1,81 @@
+﻿@model Dictionary<string, object>
+@using PagedList.Mvc;
+
+@{
+    ViewBag.Title = "Index";
+    List<StackEMA.Models.Post> Lasts = (List<StackEMA.Models.Post>)Model["lasts"];
+    PagedList.IPagedList<StackEMA.Models.Post> AllPosts = (PagedList.IPagedList<StackEMA.Models.Post>)Model["all"];
+}
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+<h2>Derniers posts</h2>
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            Titre
+        </th>
+        <th>Réponses</th>
+        <th>
+            Date
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Lasts) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <td>
+            @item.Replies.Count
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Date)
+        </td>
+        <td>
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+        </td>
+    </tr>
+}
+
+</table>
+
+<h2>Tous les posts</h2>
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            Titre
+        </th>
+        <th>Réponses</th>
+        <th>
+            Date
+        </th>
+        <th></th>
+    </tr>
+    @foreach (var item in AllPosts)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @item.Replies.Count
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+            </td>
+        </tr>
+    }
+</table>
+<form method="get">
+    <input type="number" name="size" value="@ViewBag.size" /><button type="submit">Changer la taille</button>
+</form>
+@Html.PagedListPager(AllPosts, page => Url.Action("Index", new { page, size = ViewBag.size }))

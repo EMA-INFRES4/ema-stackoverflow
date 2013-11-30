@@ -18,6 +18,8 @@ namespace StackEMA
         {
             AreaRegistration.RegisterAllAreas();
 
+            ViewEngines.Engines.Add(new MobileEngine());
+
             WebApiConfig.Register(GlobalConfiguration.Configuration);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);

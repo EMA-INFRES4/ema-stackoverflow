@@ -13,6 +13,11 @@ namespace StackEMA
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            ClassRoute cr = new ClassRoute("{lang}/{controller}/{action}", new MvcRouteHandler());
+            routes.Add(cr);
+            ClassRoute cr2 = new ClassRoute("{lang}/{controller}/{action}/{id}", new MvcRouteHandler());
+            routes.Add(cr2);
+
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",

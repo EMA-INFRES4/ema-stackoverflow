@@ -1,0 +1,25 @@
+﻿@model StackEMA.Models.Reply
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Répondre</legend>
+
+        <div class="editor-label">
+            Réponse
+        </div>
+        <div class="editor-field">
+            @Html.TextAreaFor(model => model.Message)
+            @Html.ValidationMessageFor(model => model.Message)
+        </div>
+
+        <p>
+            <input type="submit" value="Envoyer" />
+        </p>
+    </fieldset>
+}
+

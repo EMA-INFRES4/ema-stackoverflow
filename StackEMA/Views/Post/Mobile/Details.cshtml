@@ -1,0 +1,36 @@
+﻿@model StackEMA.Models.Post
+@using StackEMA.Models
+
+@{
+    ViewBag.Title = "Details - " + Model.Title;
+}
+
+<h2>Details</h2>
+<h3>Popularité : @Model.Popular</h3>
+<fieldset>
+    <legend>Post</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Title)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Title)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Date)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Date)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>
+@Html.Partial("~/Views/Post/_Replies.cshtml", Model.Replies)
+@{if (User.Identity.IsAuthenticated)
+  {
+      @Html.Partial("~/Views/Post/_FormReply.cshtml", new Reply())
+      
+  }
+}
